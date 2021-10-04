@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Home from "../views/Home.vue"
+import Beerlist from "../views/Beerlist.vue"
 import Favorites from "../views/Favorites.vue"
 
 Vue.use(VueRouter)
@@ -8,8 +8,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home,
+    name: "beerlist",
+    component: Beerlist,
   },
   {
     path: "/favorites",
