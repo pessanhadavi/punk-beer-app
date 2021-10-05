@@ -10,7 +10,11 @@ const apiClient = axios.create({
 })
 
 export default {
-  getRandomBeers() {
-    return apiClient.get("/beers")
+  getBeers(searchBeer) {
+    if (searchBeer) {
+      return apiClient.get("/beers?beer_name=" + searchBeer)
+    } else {
+      return apiClient.get("/beers")
+    }
   },
 }
