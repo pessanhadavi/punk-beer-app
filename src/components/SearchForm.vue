@@ -1,9 +1,13 @@
 <template>
   <div class="my-6">
-    <v-form>
+    <v-form @submit.prevent="search">
       <v-row class="">
         <v-col cols="12">
-          <v-text-field label="Search for specific beer" color="red darken-4" />
+          <v-text-field
+            label="Search for specific beer"
+            color="red darken-4"
+            v-model="beerSearch"
+          />
         </v-col>
       </v-row>
       <v-row>
@@ -18,5 +22,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      beerSearch: "",
+    }
+  },
+  methods: {
+    async search() {
+      await this.$store.dispatch("updateSearchBeer", this.beerSearch)
+      this.$store.dispatch("fetchBeers")
+    },
+  },
+}
 </script>
