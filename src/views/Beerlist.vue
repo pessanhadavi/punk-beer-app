@@ -16,5 +16,8 @@ export default {
   components: {
     SearchForm,
   },
+  mounted() {
+    this.$store.dispatch("fetchBeers")
+  },
 }
 </script>
