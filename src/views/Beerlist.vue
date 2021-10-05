@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" class="d-flex flex-wrap justify-center">
-        <Beer v-for="beer in beers" :key="beer.id" :beer="beer" />
+        <BeerCard v-for="beer in beers" :key="beer.id" :beer="beer" />
       </v-col>
     </v-row>
   </div>
@@ -15,13 +15,13 @@
 
 <script>
 import SearchForm from "@/components/SearchForm.vue"
-import Beer from "@/components/Beer.vue"
+import BeerCard from "@/components/BeerCard.vue"
 import { mapState } from "vuex"
 
 export default {
   components: {
     SearchForm,
-    Beer,
+    BeerCard,
   },
   mounted() {
     this.$store.dispatch("fetchBeers")

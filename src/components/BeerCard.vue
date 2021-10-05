@@ -1,8 +1,7 @@
 <template>
   <div class="beer-card-wrapper d-flex align-center pa-6 ma-3">
-
     <div class="beer-card-img">
-    <img :src="beer.image_url" />
+      <img :src="beer.image_url" />
     </div>
 
     <div class="beer-card-text ml-10">
