@@ -7,15 +7,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     beers: [],
+    searchBeer: "",
   },
   mutations: {
     SET_BEERS(state, beers) {
       state.beers = beers
     },
+    SET_SEARCH_BEER(state, searchBeer) {
+      state.searchBeer = searchBeer
+    },
   },
   actions: {
-    fetchBeers({ commit }) {
-      return BeerService.getRandomBeers().then((response) => {
+    fetchBeers({ state, commit }) {
+      return BeerService.getBeers(state.searchBeer).then((response) => {
         commit("SET_BEERS", response.data)
       })
     },
