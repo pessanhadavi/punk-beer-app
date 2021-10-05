@@ -26,10 +26,14 @@ export default {
     height: 100%;
   }
   &:hover {
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.315);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.747);
     img {
-      height: 107%;
+      height: 104%;
     }
   }
+}
+
+.beer-text {
+  width: 400px;
 }
 </style>
