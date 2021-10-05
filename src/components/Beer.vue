@@ -24,10 +24,12 @@ export default {
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
   img {
     height: 100%;
-    object-fit: cover;
   }
   &:hover {
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.315);
+    img {
+      height: 107%;
+    }
   }
 }
 </style>
