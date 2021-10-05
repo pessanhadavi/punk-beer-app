@@ -23,6 +23,9 @@ export default new Vuex.Store({
         commit("SET_BEERS", response.data)
       })
     },
+    updateSearchBeer({ commit }, searchBeer) {
+      commit("SET_SEARCH_BEER", searchBeer)
+    },
   },
   modules: {},
 })
