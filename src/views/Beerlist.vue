@@ -5,19 +5,27 @@
         <SearchForm />
       </v-col>
     </v-row>
-    <h1>This is the Beerlist</h1>
+    <v-row>
+      <v-col cols="12" class="d-flex flex-wrap justify-center">
+        <Beer v-for="beer in beers" :key="beer.id" :beer="beer" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import SearchForm from "@/components/SearchForm.vue"
+import Beer from "@/components/Beer.vue"
+import { mapState } from "vuex"
 
 export default {
   components: {
     SearchForm,
+    Beer,
   },
   mounted() {
     this.$store.dispatch("fetchBeers")
   },
+  computed: mapState(["beers"]),
 }
 </script>
