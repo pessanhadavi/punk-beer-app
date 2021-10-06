@@ -10,11 +10,18 @@ const apiClient = axios.create({
 })
 
 export default {
-  getBeers(searchBeer) {
+  getBeers(searchBeer, perPage, page) {
     if (searchBeer) {
-      return apiClient.get("/beers?beer_name=" + searchBeer)
+      return apiClient.get(
+        "/beers?beer_name=" +
+          searchBeer +
+          "&page=" +
+          page +
+          "&per_page=" +
+          perPage
+      )
     } else {
-      return apiClient.get("/beers")
+      return apiClient.get("/beers?page=" + page + "&per_page=" + perPage)
     }
   },
 }
