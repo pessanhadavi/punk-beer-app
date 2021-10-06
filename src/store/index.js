@@ -9,6 +9,7 @@ export default new Vuex.Store({
     beers: [],
     searchBeer: "",
     faveBeers: [],
+    perPage: 6,
   },
   mutations: {
     SET_BEERS(state, beers) {
@@ -25,10 +26,12 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    fetchBeers({ state, commit }) {
-      return BeerService.getBeers(state.searchBeer).then((response) => {
-        commit("SET_BEERS", response.data)
-      })
+    fetchBeers({ state, commit }, { page }) {
+      return BeerService.getBeers(state.searchBeer, state.perPage, page).then(
+        (response) => {
+          commit("SET_BEERS", response.data)
+        }
+      )
     },
     updateSearchBeer({ commit }, searchBeer) {
       commit("SET_SEARCH_BEER", searchBeer)
