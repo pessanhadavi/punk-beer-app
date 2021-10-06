@@ -34,7 +34,11 @@ export default {
   methods: {
     favorite() {
       this.isFave = !this.isFave
-      console.log(this.isFave)
+      if (this.isFave) {
+        this.$store.dispatch("addFavoriteBeer", this.beer)
+      } else {
+        this.$store.dispatch("removeFavoriteBeer", this.beer)
+      }
     },
   },
 }
