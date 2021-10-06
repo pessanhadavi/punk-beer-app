@@ -17,8 +17,8 @@ export default new Vuex.Store({
     SET_SEARCH_BEER(state, searchBeer) {
       state.searchBeer = searchBeer
     },
-    ADD_FAVORITE_BEER(state, faveBeer) {
-      state.faveBeers.push(faveBeer)
+    ADD_FAVORITE_BEER(state, beer) {
+      state.faveBeers.push(beer)
     },
   },
   actions: {
@@ -29,6 +29,9 @@ export default new Vuex.Store({
     },
     updateSearchBeer({ commit }, searchBeer) {
       commit("SET_SEARCH_BEER", searchBeer)
+    },
+    addFavoriteBeer({ commit }, beer) {
+      commit("ADD_FAVORITE_BEER", beer)
     },
   },
   modules: {},
