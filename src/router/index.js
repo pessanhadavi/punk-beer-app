@@ -10,6 +10,7 @@ const routes = [
     path: "/",
     name: "beerlist",
     component: Beerlist,
+    props: true,
   },
   {
     path: "/favorites",
