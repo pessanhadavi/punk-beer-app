@@ -10,22 +10,37 @@
         <BeerCard v-for="beer in beers" :key="beer.id" :beer="beer" />
       </v-col>
     </v-row>
+    <PrevNextBtn :page="page" />
   </div>
 </template>
 
 <script>
 import SearchForm from "@/components/SearchForm.vue"
 import BeerCard from "@/components/BeerCard.vue"
+import PrevNextBtn from "@/components/PrevNextBtn.vue"
+import PageBeers from "@/services/PageBeers.js"
 import { mapState } from "vuex"
 
 export default {
+  props: {
+    page: {
+      type: Number,
+      required: true,
+    },
+  },
   components: {
     SearchForm,
     BeerCard,
+    PrevNextBtn,
   },
-  mounted() {
-    this.$store.dispatch("fetchBeers")
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    PageBeers.getPageBeers(routeTo, next)
   },
-  computed: mapState(["beers"]),
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    PageBeers.getPageBeers(routeTo, next)
+  },
+  computed: {
+    ...mapState(["beers"]),
+  },
 }
 </script>
