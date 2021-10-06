@@ -20,8 +20,8 @@ export default new Vuex.Store({
     ADD_FAVORITE_BEER(state, beer) {
       state.faveBeers.push(beer)
     },
-    REMOVE_FAVORITE_BEER(state, faveBeers) {
-      state.faveBeers = faveBeers
+    REMOVE_FAVORITE_BEER(state, id) {
+      state.faveBeers.splice(id, 1)
     },
   },
   actions: {
@@ -37,13 +37,13 @@ export default new Vuex.Store({
       commit("ADD_FAVORITE_BEER", beer)
     },
     removeFavoriteBeer({ commit, getters }, beer) {
-      const faveBeers = getters.filterFavoriteBeers(beer)
-      commit("REMOVE_FAVORITE_BEER", faveBeers)
+      const id = getters.getBeerId(beer)
+      commit("REMOVE_FAVORITE_BEER", id)
     },
   },
   getters: {
-    filterFavoriteBeers: (state) => (beer) => {
-      return state.faveBeers.filter((faveBeer) => faveBeer !== beer)
+    getBeerId: (state) => (beer) => {
+      return state.faveBeers.indexOf(beer)
     },
   },
 })
