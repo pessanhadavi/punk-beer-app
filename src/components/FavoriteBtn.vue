@@ -9,10 +9,7 @@
 <script>
 export default {
   props: {
-    isFave: {
-      type: Boolean,
-      default: false,
-    },
+    isFave: Boolean,
   },
 }
 </script>
