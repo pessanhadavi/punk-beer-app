@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      isFave: false,
+      isFave: this.$store.getters.isFavorite(this.beer),
     }
   },
   methods: {
