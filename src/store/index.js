@@ -34,5 +34,9 @@ export default new Vuex.Store({
       commit("ADD_FAVORITE_BEER", beer)
     },
   },
-  modules: {},
+  getters: {
+    filterFavoriteBeers: (state) => (beer) => {
+      return state.faveBeers.filter((faveBeer) => faveBeer !== beer)
+    },
+  },
 })
