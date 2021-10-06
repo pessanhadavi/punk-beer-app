@@ -45,5 +45,8 @@ export default new Vuex.Store({
     getBeerId: (state) => (beer) => {
       return state.faveBeers.indexOf(beer)
     },
+    isFavorite: (state) => (beer) => {
+      return state.faveBeers.includes(beer)
+    },
   },
 })
