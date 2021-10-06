@@ -33,12 +33,12 @@ export default {
   },
   methods: {
     favorite() {
-      this.isFave = !this.isFave
-      if (this.isFave) {
+      if (!this.isFave) {
         this.$store.dispatch("addFavoriteBeer", this.beer)
       } else {
         this.$store.dispatch("removeFavoriteBeer", this.beer)
       }
+      this.isFave = this.$store.getters.isFavorite(this.beer)
     },
   },
 }
