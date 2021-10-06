@@ -31,7 +31,7 @@ export default {
   methods: {
     async search() {
       await this.$store.dispatch("updateSearchBeer", this.beerSearch)
-      this.$store.dispatch("fetchBeers")
+      this.$store.dispatch("fetchBeers", { page: 1 })
     },
   },
 }
