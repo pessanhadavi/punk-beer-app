@@ -8,7 +8,11 @@
       <h2 class="mb-3">{{ beer.name }}</h2>
       <p>{{ beer.tagline }}</p>
     </div>
-    <FavoriteBtn class="fave-btn align-self-start" />
+    <FavoriteBtn
+      class="fave-btn align-self-start"
+      @click="favorite"
+      :isFave="isFave"
+    />
   </div>
 </template>
 
@@ -21,6 +25,17 @@ export default {
   },
   props: {
     beer: Object,
+  },
+  data() {
+    return {
+      isFave: false,
+    }
+  },
+  methods: {
+    favorite() {
+      this.isFave = !this.isFave
+      console.log(this.isFave)
+    },
   },
 }
 </script>
