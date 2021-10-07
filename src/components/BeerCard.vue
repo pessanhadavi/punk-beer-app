@@ -28,17 +28,21 @@ export default {
   },
   data() {
     return {
-      isFave: this.$store.getters.isFavorite(this.beer),
+      isFave: this.$store.getters.isFavorite(this.beer.id),
     }
   },
   methods: {
     favorite() {
+      const realBeer = this.$store.getters.getBeerById(
+        this.$store.state.beers,
+        this.beer.id
+      )
       if (this.isFave) {
-        this.$store.dispatch("removeFavoriteBeer", this.beer)
+        this.$store.dispatch("removeFavoriteBeer", realBeer)
       } else {
-        this.$store.dispatch("addFavoriteBeer", this.beer)
+        this.$store.dispatch("addFavoriteBeer", realBeer)
       }
-      this.isFave = this.$store.getters.isFavorite(this.beer)
+      this.isFave = this.$store.getters.isFavorite(this.beer.id)
     },
   },
 }

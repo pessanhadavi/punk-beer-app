@@ -45,11 +45,19 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getBeerIndex: (state) => (beer) => {
-      return state.faveBeers.indexOf(beer)
+    getBeerIndex: (state, getters) => (beer) => {
+      const realBeer = getters.getBeerById(state.faveBeers, beer.id)
+      return state.faveBeers.indexOf(realBeer)
     },
-    isFavorite: (state) => (beer) => {
-      return state.faveBeers.includes(beer)
+    isFavorite: (state) => (id) => {
+      let isFave = false
+      state.faveBeers.forEach((beer) => {
+        if (beer.id === id) isFave = true
+      })
+      return isFave
+    },
+    getBeerById: () => (beerArray, id) => {
+      return beerArray.find((beer) => beer.id === id)
     },
   },
 })
