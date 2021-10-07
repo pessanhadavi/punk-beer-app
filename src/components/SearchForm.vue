@@ -25,13 +25,15 @@
 export default {
   data() {
     return {
-      beerSearch: "",
+      beerSearch: this.$store.state.beerSearch,
     }
   },
   methods: {
     async search() {
       await this.$store.dispatch("updateSearchBeer", this.beerSearch)
-      this.$store.dispatch("fetchBeers", { page: 1 })
+      this.$store.dispatch("fetchBeers", { page: 1 }).then(() => {
+        this.$router.push({ name: "beerlist", params: { page: 1 } })
+      })
     },
   },
 }
