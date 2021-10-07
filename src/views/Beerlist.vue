@@ -10,7 +10,7 @@
         <BeerCard v-for="beer in beers" :key="beer.id" :beer="beer" />
       </v-col>
     </v-row>
-    <PrevNextBtn :page="page" />
+    <PrevNextBtn :page="page" class="my-4" />
   </div>
 </template>
 
