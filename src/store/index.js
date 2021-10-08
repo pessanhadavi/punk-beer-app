@@ -29,7 +29,6 @@ export default new Vuex.Store({
     fetchBeers({ state, commit }, { page }) {
       return BeerService.getBeers(state.searchBeer, state.perPage, page).then(
         (response) => {
-          console.log(response.headers)
           commit("SET_BEERS", response.data)
         }
       )
