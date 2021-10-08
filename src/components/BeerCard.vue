@@ -1,13 +1,28 @@
 <template>
   <div class="beer-card-wrapper d-flex align-center pa-6 ma-3">
-    <div class="beer-card-img">
-      <img :src="beer.image_url" />
-    </div>
-
-    <div class="beer-card-text ml-10">
-      <h2 class="mb-3">{{ beer.name }}</h2>
-      <p>{{ beer.tagline }}</p>
-    </div>
+    <v-dialog transition="dialog-bottom-transition" max-width="600">
+      <template v-slot:activator="{ on, attrs }">
+        <a v-bind="attrs" v-on="on">
+          <div class="beer-card-img">
+            <img :src="beer.image_url" />
+          </div>
+        </a>
+        <a v-bind="attrs" v-on="on">
+          <div class="beer-card-text ml-10">
+            <h2 class="mb-3">{{ beer.name }}</h2>
+            <p>{{ beer.tagline }}</p>
+          </div>
+        </a>
+      </template>
+      <template v-slot:default="dialog">
+        <v-card>
+          <BeerDetail :beer="beer" />
+          <v-card-actions class="justify-end">
+            <v-btn text @click="dialog.value = false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </template>
+    </v-dialog>
     <FavoriteBtn
       class="fave-btn align-self-start"
       @click="favorite"
@@ -18,10 +33,12 @@
 
 <script>
 import FavoriteBtn from "@/components/FavoriteBtn.vue"
+import BeerDetail from "@/components/BeerDetail.vue"
 
 export default {
   components: {
     FavoriteBtn,
+    BeerDetail,
   },
   props: {
     beer: Object,
@@ -75,5 +92,10 @@ export default {
   position: absolute;
   top: 5%;
   right: 3%;
+}
+
+h2,
+p {
+  color: black;
 }
 </style>
